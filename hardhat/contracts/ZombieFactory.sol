@@ -15,4 +15,7 @@ contract ZombieFactory {
 
     // zombile collection
     Zombie[] public zombies;
+
+    // createZombie: create a zombie
+    function createZombie(string memory _name, uint256 dna) public {}
 }
