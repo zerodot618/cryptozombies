@@ -20,7 +20,7 @@ contract ZombieHelper is ZombieFeeding {
     }
 
     // changeDna change Zombie's dna when it's level greater or equal 20
-    function changeDna(uint256 _zombieId, uint256 calldata _newDna)
+    function changeDna(uint256 _zombieId, uint256 _newDna)
         external
         aboveLevel(20, _zombieId)
     {

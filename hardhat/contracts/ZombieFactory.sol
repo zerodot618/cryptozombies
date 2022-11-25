@@ -41,7 +41,7 @@ contract ZombieFactory is Ownable {
 
     // _createZombie: create a zombie
     function _createZombie(string memory _name, uint256 _dna) internal {
-        zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime)));
+        zombies.push(Zombie(_name, _dna, 1, uint32(block.timestamp + cooldownTime)));
         uint256 zombieId = zombies.length - 1;
         zombieToOwner[zombieId] = msg.sender;
         ownerZombieCount[msg.sender]++;
