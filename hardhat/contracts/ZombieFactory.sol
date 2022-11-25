@@ -28,6 +28,7 @@ contract ZombieFactory {
 
     // createRandomZombie: randon create a zombie
     function createRandomZombie(string memory _name) public {
+        require(ownerZombieCount[msg.sender] == 0);
         uint256 randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
@@ -51,3 +52,5 @@ contract ZombieFactory {
         return rand % dnaModulus;
     }
 }
+
+contract ZombieFeeding is ZombieFactory {}
