@@ -12,4 +12,7 @@ contract ZombieFactory {
         string name;
         uint256 dna;
     }
+
+    // zombile collection
+    Zombie[] public zombies;
 }
