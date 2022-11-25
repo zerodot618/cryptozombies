@@ -13,6 +13,8 @@ contract ZombieFactory is Ownable {
     uint256 dnaDigits = 16;
     // shorten an interger to 16 digits
     uint256 dnaModulus = 10**dnaDigits;
+    // cooldown period's time
+    uint256 cooldownTime = 1 days;
 
     // keeps strack of adress that owner has zombie
     mapping(uint256 => address) public zombieToOwner;
@@ -39,7 +41,7 @@ contract ZombieFactory is Ownable {
 
     // _createZombie: create a zombie
     function _createZombie(string memory _name, uint256 _dna) internal {
-        zombies.push(Zombie(_name, _dna));
+        zombies.push(Zombie(_name, _dna, 1, uint32(now + cooldownTime)));
         uint256 zombieId = zombies.length - 1;
         zombieToOwner[zombieId] = msg.sender;
         ownerZombieCount[msg.sender]++;
