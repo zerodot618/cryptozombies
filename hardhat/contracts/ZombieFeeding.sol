@@ -3,7 +3,6 @@ pragma solidity ^0.8.17;
 
 import "./ZombieFactory.sol";
 
-
 interface KittyInterface {
     function getKitty(uint256 _id)
         external
@@ -26,7 +25,7 @@ contract ZombieFeeding is ZombieFactory {
     // initialze kittyContract from cdAdderss
     KittyInterface kittyContract;
 
-    function setKittyContractAddress(address _address) external {
+    function setKittyContractAddress(address _address) external onlyOwner {
         kittyContract = KittyInterface(_address);
     }
 
