@@ -2,6 +2,11 @@
 pragma solidity ^0.8.17;
 
 contract ZombieFactory {
+    // events
+    // zombie was created event
+    event NewZombie(uint256 zombieId, string name, uint256 dna);
+
+    // state variable
     // zombie's dna length
     uint256 dnaDigits = 16;
     // shorten an interger to 16 digits
@@ -25,6 +30,8 @@ contract ZombieFactory {
     // _createZombie: create a zombie
     function _createZombie(string memory _name, uint256 _dna) private {
         zombies.push(Zombie(_name, _dna));
+        uint256 zombieId = zombies.length - 1;
+        emit NewZombie(zombieId, _name, _dna);
     }
 
     // _genetateRandomDna: take one string parameter, return a uint dna
