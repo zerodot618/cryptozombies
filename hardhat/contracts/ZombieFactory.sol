@@ -16,6 +16,12 @@ contract ZombieFactory {
     // zombile collection
     Zombie[] public zombies;
 
+    // createRandomZombie: randon create a zombie
+    function createRandomZombie(string memory _name) public {
+        uint256 randDna = _generateRandomDna(_name);
+        _createZombie(_name, randDna);
+    }
+
     // _createZombie: create a zombie
     function _createZombie(string memory _name, uint256 _dna) private {
         zombies.push(Zombie(_name, _dna));
