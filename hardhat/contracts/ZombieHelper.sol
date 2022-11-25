@@ -33,5 +33,10 @@ contract ZombieHelper is ZombieFeeding {
         external
         view
         returns (uint256[] memory)
-    {}
+    {
+        // memery var need makesure length
+        uint256[] memory result = new uint256[](ownerZombieCount[_owner]);
+
+        return result;
+    }
 }
