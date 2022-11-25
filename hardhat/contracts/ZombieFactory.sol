@@ -12,6 +12,11 @@ contract ZombieFactory {
     // shorten an interger to 16 digits
     uint256 dnaModulus = 10**dnaDigits;
 
+    // keeps strack of adress that owner has zombie
+    mapping(uint256 => address) public zombieToOwner;
+    // keeps strack of how many zombies an owner has
+    mapping(address => uint256) ownerZombieCount;
+
     // zombile struct
     struct Zombie {
         string name;
