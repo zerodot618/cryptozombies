@@ -35,11 +35,13 @@ contract ZombieFeeding is ZombieFactory {
         uint256 _zombieId,
         uint256 _targetDna,
         string memory _species
-    ) public {
+    ) internal {
         require(msg.sender == zombieToOwner[_zombieId]);
-        Zombie storage myZombie = zombies[_zombieId];
-        _targetDna = _targetDna % dnaModulus;
 
+        Zombie storage myZombie = zombies[_zombieId];
+        require(_isReady(myZombie));
+
+        _targetDna = _targetDna % dnaModulus;
         uint256 newDna = (myZombie.dna + _targetDna) / 2;
         // If _species is `kitty`,then newDna ends with 99
         // Assume newDna is 334455, then newDna % 100 is 55,
@@ -51,6 +53,7 @@ contract ZombieFeeding is ZombieFactory {
             newDna = newDna - (newDna % 100) + 99;
         }
         _createZombie("NoName", newDna);
+        _triggerCooldown(myZombie);
     }
 
     // feedOnKitty interact with CryptoKitties Contract
