@@ -25,6 +25,7 @@ contract ZombieFeeding is ZombieFactory {
     // initialze kittyContract from cdAdderss
     KittyInterface kittyContract;
 
+    // setKittyContractAddress set CryptoKitties Contract address
     function setKittyContractAddress(address _address) external onlyOwner {
         kittyContract = KittyInterface(_address);
     }
