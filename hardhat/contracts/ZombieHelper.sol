@@ -37,6 +37,15 @@ contract ZombieHelper is ZombieFeeding {
         // memery var need makesure length
         uint256[] memory result = new uint256[](ownerZombieCount[_owner]);
 
+        uint256 counter = 0;
+
+        for (uint256 i = 0; i < zombies.length; i++) {
+            if (zombieToOwner[i] == _owner) {
+                result[counter] = i;
+                counter++;
+            }
+        }
+
         return result;
     }
 }
