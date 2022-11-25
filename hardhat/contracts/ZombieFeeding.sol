@@ -22,6 +22,11 @@ interface KittyInterface {
 }
 
 contract ZombieFeeding is ZombieFactory {
+    // really CryptoKitties contract address
+    address ckAddress = 0x06012c8cf97BEaD5deAe237070F9587f8E7A266d;
+    // initialze kittyContract from cdAdderss
+    KittyInterface kittyContract = KittyInterface(ckAddress);
+
     // feedAndMultiply _zombieId's zombie feed lifeform's dna
     function feedAndMultiply(uint256 _zombieId, uint256 _targetDna) public {
         require(msg.sender == zombieToOwner[_zombieId]);
